@@ -1,4 +1,34 @@
 function op = operators(name, M, N, varargin)
+% % Function Name: operators
+%
+%
+% Inputs:
+%   name        : operator name
+%                   - vignetting
+%                   - id (denoising)
+%                   - blur (deconvolution)
+%                   - blur+border (deconv with masked borders)
+%                   - motion blur
+%                   - super-resolution
+%                   - randommasking (inpainting)
+%                   - cs (compressed sensing)
+%
+%   M           : number of rows of the image
+%   N           : number of columns of the image
+%   varargin    : arguments depend on the operator used 
+%
+% Outputs:
+%   op          : stuct with function definitions and parameters used
+%                 during restoration function
+
+% Citation:
+% If you use this code please cite: 
+% S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
+% GMM-based patch priors for image restoration: Three ingredients for a 
+% 100x speed-up", arXiv.
+%
+% License details as in license.txt
+% ________________________________________
 
 options    = makeoptions(varargin{:});
 

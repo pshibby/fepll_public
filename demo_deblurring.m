@@ -1,3 +1,16 @@
+% % Deblurring demo script as explained in: 
+% 
+% S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
+% GMM-based patch priors for image restoration: Three ingredients for a 
+% 100x speed-up", arXiv.
+%
+% If you use any part of this software package please cite the above
+% publication
+% 
+%
+% License details as in license.txt
+% ________________________________________
+
 clear all
 close all
 
