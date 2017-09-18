@@ -1,7 +1,7 @@
 function zhat = fepll_per_patch(ztilde, sigma2, prior_model, varargin)
 
 options      = makeoptions(varargin{:});
-truncation   = getoptions(options, 'truncation', true);
+truncation   = getoptions(options, 'truncation', isfield(prior_model.GS, 't'));
 truncation   = getoptions(options, 'trunc_wiener', truncation);
 searchtree   = getoptions(options, 'searchtree', true);
 verbose      = getoptions(options, 'verbose', true);

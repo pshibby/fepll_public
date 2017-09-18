@@ -1,7 +1,7 @@
 function labels = gs_match(y, GS, sig2, varargin)
 
 options      = makeoptions(varargin{:});
-truncation   = getoptions(options, 'truncation', true);
+truncation   = getoptions(options, 'truncation', isfield(GS, 't'));
 truncation   = getoptions(options, 'trunc_match', truncation);
 
 [d, n] = size(y);

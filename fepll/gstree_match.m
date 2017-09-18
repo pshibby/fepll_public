@@ -1,7 +1,7 @@
 function labels = gstree_match(y, GStree, sig2, varargin)
 
 options      = makeoptions(varargin{:});
-truncation   = getoptions(options, 'truncation', true);
+truncation   = getoptions(options, 'truncation', isfield(GStree, 't'));
 truncation   = getoptions(options, 'trunc_match', truncation);
 
 sy2    = sum(y.^2, 1);

@@ -16,7 +16,7 @@ y      = op.crop(op.A(x) + sig * randn(op.osize));
 x      = op.crop(x);
 
 % Load prior computed offline
-prior_model = get_prior_model();
+prior_model = get_prior_model(0.99);
 
 % Run FEPLL
 tstart = tic;
