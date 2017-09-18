@@ -1,14 +1,26 @@
 function h = plotimagesc(img, varargin)
-%% Display an image such that back corresponds to the minimum value
-%  and white to the maximu one.
+% % Function Name: plotimagesc
 %
-% Input/Output
+%   Display an image such that black corresponds to the minimum value
+%   and white to the maximum one.
 %
-%    img        a M x N array
+% Inputs:
+%   img         : a M x N array
 %
-% Optional arguments
+% Outputs:
+%   h           : handle on the created axes
 %
-%    see plotimage
+% Optional arguments:
+%   see plotimage
+
+% Citation:
+% If you use this code please cite:
+% S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
+% GMM-based patch priors for image restoration: Three ingredients for a
+% 100x speed-up", arXiv.
+%
+% License details as in license.txt
+% ________________________________________
 
 
 

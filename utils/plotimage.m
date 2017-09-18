@@ -1,37 +1,47 @@
 function h = plotimage(img, varargin)
-%% Display an image
+% % Function Name: plotimage
 %
-% Input/Output
+%   Display an image
 %
-%    img        a M x N array
+% Inputs:
+%   img         : a M x N array
 %
-%    h          handle on the created axes
+% Outputs:
+%   h           : handle on the created axes
 %
-% Optional arguments
+% Optional arguments:
+%   range       : range on wich pixel values are mapped to grey or
+%                 RGB values (default [0 255])
 %
-%    range      range on wich pixel values are mapped to grey or
-%               RGB values (default [0 255])
+%   alpha       : for gamma correction: beta * img.^alpha (default 1)
 %
-%    alpha      for gamma correction: beta * img.^alpha (default 1)
+%   beta        : for gamma correction: beta * img.^alpha (default 1)
 %
-%    beta       for gamma correction: beta * img.^alpha (default 1)
+%   Q           : number of auqntification levels (default 256).
+%                 incompatible with on Windows systems
 %
-%    Q          number of auqntification levels (default 256).
-%               incompatible with on Windows systems
+%   adjust      : redefine the range automatically:
+%                 'no':   keep the original range
+%                 'auto': range is determined form extreme values
+%                 'm1s':  range is [0 m+s] where m and s are the mean
+%                         and standard deviation of img
+%                 'm2s':  range is [0 m+2*s]
+%                 'm3s':  range is [0 m+3*s]
+%                 'm4s':  range is [0 m+4*s]
+%                 'm5s':  range is [0 m+5*s]
 %
-%    adjust     redefine the range automatically:
-%               'no':   keep the original range
-%               'auto': range is determined form extreme values
-%               'm1s':  range is [0 m+s] where m and s are the mean
-%                       and standard deviation of img
-%               'm2s':  range is [0 m+2*s]
-%               'm3s':  range is [0 m+3*s]
-%               'm4s':  range is [0 m+4*s]
-%               'm5s':  range is [0 m+5*s]
+%   rangeof     : handle to an existing axes (created by plotimage*)
+%                 used to display img with the exact same color palette.
+%                 all other optional arguments are ignored.
+
+% Citation:
+% If you use this code please cite:
+% S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
+% GMM-based patch priors for image restoration: Three ingredients for a
+% 100x speed-up", arXiv.
 %
-%    rangeof    handle to an existing axes (created by plotimage*)
-%               used to display img with the exact same color palette.
-%               all other optional arguments are ignored.
+% License details as in license.txt
+% ________________________________________
 
 
 

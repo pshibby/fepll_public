@@ -1,17 +1,32 @@
 function savesubfig(h, dirname)
-%% Save a figure and its subfigures to a directory
+% % Function Name: savesubfig
 %
-%  save the figure H in directory DIRNAME and all its subplots as
-%    DIRNAME/main.fig
-%    DIRNAME/subplot1.fig
-%    DIRNAME/subplot2.fig
-%    ...
+%   Save figure and its subfigures to a directory
 %
-%  for subaxes containing image data, SAVEFIGSUB will also create
-%    DIRNAME/subimg1.png
-%    DIRNAME/subimg2.png
-%    ...
+% Inputs:
+%   h           : handle on the figure
+%   direname    : name directory
+%
+% Description:
+%   save the figure H in directory DIRNAME and all its subplots as
+%     DIRNAME/main.fig
+%     DIRNAME/subplot1.fig
+%     DIRNAME/subplot2.fig
+%     ...
+%
+%   for subaxes containing image data, SAVEFIGSUB will also create
+%     DIRNAME/subimg1.png
+%     DIRNAME/subimg2.png
+%     ...
 
+% Citation:
+% If you use this code please cite: 
+% S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
+% GMM-based patch priors for image restoration: Three ingredients for a 
+% 100x speed-up", arXiv.
+%
+% License details as in license.txt
+% ________________________________________
 
 
 [status, msg,~] = mkdir(dirname);
