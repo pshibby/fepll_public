@@ -20,12 +20,15 @@ deterministic('on');
 % Parameters
 sig    = 2;
 
-% Load and generate images (50, 28, 57, 5, 25, 32)
+% Load and generate image
 x      = double(imread('50.png'))/255;
 [M, N] = size(x);
 op     = operators('blur', M, N, 'width', 3);
 sig    = sig/255;
-y      = op.crop(op.A(x) + sig * randn(op.osize));
+y      = op.A(x) + sig * randn(op.osize);
+
+% Crop y and x for realistic experiment (no periodical effects)
+y      = op.crop(y);
 x      = op.crop(x);
 
 % Load prior computed offline

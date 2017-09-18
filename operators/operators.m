@@ -9,22 +9,55 @@ function op = operators(name, M, N, varargin)
 %                   - blur (deconvolution)
 %                   - blur+border (deconv with masked borders)
 %                   - motion blur
-%                   - super-resolution
+%                   - subresolution (super-resolution)
 %                   - randommasking (inpainting)
 %                   - cs (compressed sensing)
 %
 %   M           : number of rows of the image
 %   N           : number of columns of the image
-%   varargin    : arguments depend on the operator used 
+%   varargin    : arguments depend on the operator used (see examples)
 %
 % Outputs:
-%   op          : stuct with function definitions and parameters used
-%                 during restoration function
+%   op          : stuct with function definitions and parameters:
+%                   - op.isize     : size of x in y = A x
+%                   - op.osize     : size of y in y = A x
+%                   - op.A(x)      : apply the operator A to x
+%                   - op.At(y)     : apply the adjoint A^t to y
+%                   - op.AtA(x)    : apply the gram matrix A^t A to x
+%                   - op.inv_AtA_plus_tauId(x, tau)
+%                                  : apply (A^t A + tau Id)^-1
+%                   - op.inv_AtA_plus_tauLaplacian(x, tau)
+%                                  : apply (A^t A + tau Laplacian)^-1
+%                   - op.Tikhonov(x, tau)
+%                                  : apply (A^t A + tau Laplacian)^-1 A^t
+%                   - op.A_norm2   : l2 norm || A ||_2
+%                   - op.A_normF   : Frobenius norm || A ||_F
+%                   - op.AtA_normF : Gram Frobenius norm || A^t A ||_F
+%
+% Examples:
+%
+%   % Gaussian blur of width 3px
+%   op = operators('blur', M, N, 'width', 3')
+%
+%   % pre-defined blur
+%   K = fspecial('motion', 10, 45);
+%   op = operators('blur', M, N, 'kernel', K);
+%
+%   % super-resolution with 0.5px Gaussian bluring, x2 subsampling
+%   % and Kaiser window appodization
+%   op = operators('subresoltuion', M, N, 'width', K, 'factor', 0.5,
+%                  'windowing', 'kaiser');
+%
+%   % inpainting with 50% of missing pixels
+%   op = operators('randommasking', 'factor', 0.5);
+%
+%   % compressed sensing with x2 compression rate
+%   op = operators('randommasking', 'factor', 0.5);
 
 % Citation:
-% If you use this code please cite: 
+% If you use this code please cite:
 % S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
-% GMM-based patch priors for image restoration: Three ingredients for a 
+% GMM-based patch priors for image restoration: Three ingredients for a
 % 100x speed-up", arXiv.
 %
 % License details as in license.txt
@@ -104,7 +137,6 @@ switch name
                                 -(NK-1)/2 <= v & v <= (NK-1)/2));
             K = sK / sum(sK(:));
         end
-        K = K';
         [MK, NK] = size(K);
         kernel = zeros(M, N);
         kernel(fftshift(-(MK-1)/2 <= u & u <= (MK-1)/2 & ...
@@ -141,7 +173,7 @@ switch name
 
     case 'blur+border' % deconvolution with masked borders
         K = getoptions(options, 'kernel',  [], 1);
-        K = K';
+
         [MK NK] = size(K);
         kernel = zeros(M, N);
         kernel(fftshift(-(MK-1)/2 <= u & u <= (MK-1)/2 & ...
@@ -172,7 +204,7 @@ switch name
 
     case 'motionblur'
         K = fspecial('motion', 10, 45);
-        op = operators('blur', M, N, 'kernel', K);
+        op = operators('blur', M, N, 'kernel', K');
         op.name = name;
         return
 
