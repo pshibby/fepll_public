@@ -1,4 +1,24 @@
 function [GStree, GS] = gstree_sv_threshold(GStree, GS, p)
+% % Function Name: gstee_sv_threshold
+%
+%
+% Inputs:
+%   GStree      : GMM-tree 
+%   GS          : GMM model
+%   p           : threshold for truncation
+%
+% Outputs:
+%   GStree      : GMM-tree after flat-tail approximation
+%   GS          : GMM model after flat-tail approximation
+
+% Citation:
+% If you use this code please cite: 
+% S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
+% GMM-based patch priors for image restoration: Three ingredients for a 
+% 100x speed-up", arXiv.
+%
+% License details as in license.txt
+% ________________________________________
 
 for k = 1:GS.nmodels
     S = GS.S{k};
