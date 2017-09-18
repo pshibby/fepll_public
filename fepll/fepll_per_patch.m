@@ -1,4 +1,24 @@
 function zhat = fepll_per_patch(ztilde, sigma2, prior_model, varargin)
+% % Function Name: fepll_per_patch
+%
+%
+% Inputs:
+%   ztilde      : patches extracted from noisy image
+%   sigma2      : noise variance
+%   prior_model : model generated using get_prior_model.m
+%   varargin    : refer to retrieve arguments for a list
+%
+% Outputs:
+%   zhat        : restored image patches
+
+% Citation:
+% If you use this code please cite: 
+% S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
+% GMM-based patch priors for image restoration: Three ingredients for a 
+% 100x speed-up", arXiv.
+%
+% License details as in license.txt
+% ________________________________________
 
 options      = makeoptions(varargin{:});
 truncation   = getoptions(options, 'truncation', isfield(prior_model.GS, 't'));

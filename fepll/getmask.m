@@ -1,4 +1,25 @@
 function mask = getmask(M, N, P, r, userandom)
+% % Function Name: getmask
+%
+%
+% Inputs:
+%   M           : number of rows in the image
+%   N           : number of columns in the image
+%   P           : Patch size
+%   r           : size of overlap
+%   userandom   : use random grid
+%
+% Outputs:
+%   xhat        : mask to extract the patches from
+
+% Citation:
+% If you use this code please cite: 
+% S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
+% GMM-based patch priors for image restoration: Three ingredients for a 
+% 100x speed-up", arXiv.
+%
+% License details as in license.txt
+% ________________________________________
 
 if ~exist('userandom', 'var')
     userandom = true;

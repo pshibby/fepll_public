@@ -1,4 +1,25 @@
 function [xhat, xinit] =  fepll(y, sigma, prior_model, varargin)
+% % Function Name: fepll
+%
+%
+% Inputs:
+%   y           : noisy image
+%   sigma       : noise std
+%   prior_model : model generated using get_prior_model.m
+%   varargin    : refer to retrieve arguments for a list
+%
+% Outputs:
+%   xhat        : restored image
+%   xinit       : initialization
+
+% Citation:
+% If you use this code please cite: 
+% S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
+% GMM-based patch priors for image restoration: Three ingredients for a 
+% 100x speed-up", arXiv.
+%
+% License details as in license.txt
+% ________________________________________
 
 % Retrieve arguments
 options    = makeoptions(varargin{:});

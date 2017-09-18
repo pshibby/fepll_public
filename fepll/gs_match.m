@@ -1,4 +1,23 @@
 function labels = gs_match(y, GS, sig2, varargin)
+% % Function Name: gs_match
+%
+%
+% Inputs:
+%   y           : matrix containing image patches
+%   GS          : GMM model
+%   sig2        : noise variance
+%
+% Outputs:
+%   labels      : index of Gaussian components each patch belongs to
+
+% Citation:
+% If you use this code please cite: 
+% S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
+% GMM-based patch priors for image restoration: Three ingredients for a 
+% 100x speed-up", arXiv.
+%
+% License details as in license.txt
+% ________________________________________
 
 options      = makeoptions(varargin{:});
 truncation   = getoptions(options, 'truncation', isfield(GS, 't'));
