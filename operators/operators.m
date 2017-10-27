@@ -138,9 +138,15 @@ switch name
             K = sK / sum(sK(:));
         end
         [MK, NK] = size(K);
+        if mod(MK, 2) == 0
+            MK = MK + 1;
+        end
+        if mod(NK, 2) == 0
+            NK = NK + 1;
+        end
         kernel = zeros(M, N);
         kernel(fftshift(-(MK-1)/2 <= u & u <= (MK-1)/2 & ...
-                        -(NK-1)/2 <= v & v <= (NK-1)/2)) = K;
+                        -(NK-1)/2 <= v & v <= (NK-1)/2)) = K(:);
         kernel = ifftshift(kernel);
         fkernel = fft2(kernel);
 

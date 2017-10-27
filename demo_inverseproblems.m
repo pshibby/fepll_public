@@ -14,7 +14,7 @@
 clear all
 close all
 
-addpath('.')
+addpathrec('.')
 deterministic('on');
 
 % Parameters
