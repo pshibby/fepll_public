@@ -12,5 +12,5 @@ function h = fancyfigure(varargin)
 % License details as in license.txt
 % ________________________________________
 
-h = figure('units', 'normalized', 'outerposition', [0 0 1 1]);
+h = figure('units', 'normalized', 'outerposition', [0 0 1 1], varargin{:});
 set(h, 'defaulttextinterpreter', 'latex');
