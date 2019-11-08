@@ -1,18 +1,20 @@
+/*  Code to project patches to make an image
+**  For usage/input/output details, refer projpatches.m
+**
+**  Citation:
+**  If you use this code please cite:
+**  S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
+**  GMM-based patch priors for image restoration: Three ingredients for a
+**  100x speed-up", arXiv.
+**
+**  License details as in license.txt
+**  ________________________________________
+*/
+
 #include <mex.h>
 #include <stdio.h>
 #include <math.h>
-//  Code to project patches to make an image 
-//  For usage/input/output details, refer projpatches.m
-//
-//  Citation:
-//  If you use this code please cite: 
-//  S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
-//  GMM-based patch priors for image restoration: Three ingredients for a 
-//  100x speed-up", arXiv.
-// 
-//  License details as in license.txt
-//  ________________________________________
-//          
+
 static void usage()
 {
   char str[1024];

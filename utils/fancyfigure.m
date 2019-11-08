@@ -4,9 +4,9 @@ function h = fancyfigure(varargin)
 %   Same as figure but fullsize and with latex interpreter
 
 % Citation:
-% If you use this code please cite: 
+% If you use this code please cite:
 % S. Parameswaran, C-A. Deledalle, L. Denis and T. Q. Nguyen, "Accelerating
-% GMM-based patch priors for image restoration: Three ingredients for a 
+% GMM-based patch priors for image restoration: Three ingredients for a
 % 100x speed-up", arXiv.
 %
 % License details as in license.txt
